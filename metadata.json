@@ -1,0 +1,7 @@
+{
+  "name": "Rental Jaya Mandiri - Premium",
+  "description": "Layanan rental mobil terpercaya di Indonesia dengan armada lengkap dan pelayanan premium.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

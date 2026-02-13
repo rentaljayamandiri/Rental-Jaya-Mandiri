@@ -2,30 +2,33 @@ import { GoogleGenAI } from "@google/genai";
 import { INITIAL_CARS } from "./constants";
 
 export const getCarRecommendation = async (userPrompt: string) => {
-  // Pastikan API_KEY sudah diset di Environment Variables Vercel
-  if (!process.env.API_KEY) {
-    return "Maaf, API Key belum terkonfigurasi di server. Silakan pastikan 'API_KEY' sudah ditambahkan di Environment Variables Vercel.";
+  // PENTING: Jangan ubah baris ini, ini adalah cara Vite mengambil API_KEY
+  const apiKey = process.env.API_KEY;
+
+  if (!apiKey || apiKey === "undefined") {
+    console.error("API_KEY is missing in environment");
+    return "Maaf bosku, sepertinya API Key belum terpasang di Vercel. Silakan tambahkan 'API_KEY' di Settings > Environment Variables lalu Redeploy.";
   }
 
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: apiKey });
     
     const fleetInfo = INITIAL_CARS.map(c => 
-      `- Mobil: ${c.brand} ${c.name}, Kategori: ${c.category}, Harga: Rp${c.pricePerDay.toLocaleString('id-ID')}/hari, Kapasitas: ${c.seats} orang. Deskripsi: ${c.description}`
+      `- Mobil: ${c.brand} ${c.name}, Kategori: ${c.category}, Harga: Rp${c.pricePerDay.toLocaleString('id-ID')}/hari, Kapasitas: ${c.seats} orang. Fitur: ${c.features.join(', ')}`
     ).join('\n');
 
     const systemInstruction = `
-      Anda adalah asisten AI ramah dan profesional dari Rental Jaya Mandiri (RJM).
-      Berikut adalah daftar armada kami:
+      Anda adalah asisten AI dari Rental Jaya Mandiri (RJM).
+      Tugas Anda: Membantu pelanggan memilih mobil rental yang tepat.
+      
+      Daftar Armada Kami:
       ${fleetInfo}
 
-      Aturan:
-      1. Berikan rekomendasi mobil paling cocok berdasarkan kebutuhan user.
-      2. Gunakan bahasa Indonesia yang sopan dan membantu.
-      3. Selalu sebutkan harga sewanya.
-      4. Jika user butuh untuk banyak orang (di atas 7), arahkan ke HiAce Premio.
-      5. Jika user butuh kemewahan atau VIP, arahkan ke Toyota Alphard.
-      6. Akhiri dengan ajakan untuk menghubungi WhatsApp kami di menu Kontak.
+      Instruksi:
+      1. Jawab dengan ramah menggunakan Bahasa Indonesia yang profesional namun santai.
+      2. Berikan saran mobil spesifik berdasarkan jumlah penumpang atau budget yang disebutkan user.
+      3. Jika user ingin booking, arahkan mereka untuk menghubungi WhatsApp admin di nomor +62 812-1093-2808.
+      4. Jangan memberikan informasi di luar konteks rental mobil RJM.
     `;
 
     const response = await ai.models.generateContent({
@@ -37,9 +40,9 @@ export const getCarRecommendation = async (userPrompt: string) => {
       },
     });
 
-    return response.text || "Saya merekomendasikan Toyota Avanza untuk perjalanan Anda yang hemat dan nyaman.";
+    return response.text || "Saya merekomendasikan Toyota Innova Zenix untuk kenyamanan keluarga Anda. Ada lagi yang ingin ditanyakan?";
   } catch (error) {
     console.error("Gemini Error:", error);
-    return "Ups, asisten AI kami sedang istirahat sejenak. Silakan langsung hubungi admin via WhatsApp untuk respon cepat!";
+    return "Waduh, otak AI saya sedang panas bosku. Coba tanya lagi sebentar lagi atau langsung hubungi admin via WhatsApp ya!";
   }
 };

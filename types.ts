@@ -44,4 +44,4 @@ export interface ChatMessage {
 }
 
 export type ViewState = 'HOME' | 'LOGIN' | 'DASHBOARD';
-export type AdminSubView = 'OVERVIEW' | 'ARMADA' | 'LAYANAN' | 'KONTAK' | 'SLIDER' | 'ARTIKEL' | 'KELOLA_ADMIN' | 'PROFIL';
+export type AdminSubView = 'OVERVIEW' | 'ARMADA' | 'LAYANAN' | 'KONTAK' | 'SLIDER' | 'ARTIKEL' | 'KELOLA_ADMIN' | 'DATABASE';

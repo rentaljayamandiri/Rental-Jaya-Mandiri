@@ -3,74 +3,60 @@ import { Car, CarCategory, User } from './types';
 
 export const INITIAL_CARS: Car[] = [
   {
-    id: '1',
+    id: 'zenix-1',
     brand: 'Toyota',
-    name: 'Innova Zenix',
+    name: 'Innova Zenix V',
     category: CarCategory.MPV_PREMIUM,
-    pricePerDay: 850000,
-    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&q=80&w=800',
+    pricePerDay: 950000,
+    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&q=80&w=1200',
     transmission: 'Automatic',
-    fuelType: 'Bensin/Hybrid',
+    fuelType: 'Hybrid',
     seats: 7,
-    rating: 4.9,
-    description: 'Generasi terbaru Innova dengan kenyamanan premium dan teknologi hybrid.',
-    features: ['AC', 'Audio Premium', 'Leather Seats', 'Kamera Parkir']
+    rating: 5.0,
+    description: 'Unit paling favorit. Sangat nyaman, irit bensin, dan interior mewah.',
+    features: ['Panoramic Roof', 'Captain Seat', 'Full Entertainment']
   },
   {
-    id: '2',
+    id: 'alphard-1',
     brand: 'Toyota',
-    name: 'Alphard',
+    name: 'Alphard Transformer',
     category: CarCategory.LUXURY,
-    pricePerDay: 2500000,
-    image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=800',
+    pricePerDay: 2800000,
+    image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1200',
     transmission: 'Automatic',
     fuelType: 'Bensin',
     seats: 7,
     rating: 5.0,
-    description: 'Standar kemewahan untuk perjalanan bisnis dan tamu VIP.',
-    features: ['Pilot Seats', 'Sunroof', 'Cool Box', 'Surround Sound']
+    description: 'Pilihan utama pejabat dan eksekutif. Kenyamanan nomor satu.',
+    features: ['Electric Door', 'Pilot Seat', 'Cool Box']
   },
   {
-    id: '3',
+    id: 'premio-1',
     brand: 'Toyota',
     name: 'HiAce Premio',
     category: CarCategory.VAN,
-    pricePerDay: 1200000,
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800',
+    pricePerDay: 1400000,
+    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=1200',
     transmission: 'Manual',
     fuelType: 'Diesel',
-    seats: 15,
-    rating: 4.8,
-    description: 'Pilihan terbaik untuk rombongan besar dengan kabin luas.',
-    features: ['AC Double', 'Audio System', 'Bagasi Luas', 'Comfortable Seats']
+    seats: 14,
+    rating: 4.9,
+    description: 'Unit travel mewah untuk keluarga besar atau rombongan kantor.',
+    features: ['Luxury Interior', 'Reclining Seats', 'AC Dingin']
   },
   {
-    id: '4',
+    id: 'avanza-1',
     brand: 'Toyota',
-    name: 'Avanza',
+    name: 'New Avanza',
     category: CarCategory.MPV,
-    pricePerDay: 400000,
-    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&q=80&w=800',
-    transmission: 'Manual/Automatic',
-    fuelType: 'Bensin',
-    seats: 7,
-    rating: 4.6,
-    description: 'Mobil keluarga sejuta umat yang handal dan irit.',
-    features: ['AC', 'Power Steering', 'Safety Feature']
-  },
-  {
-    id: '5',
-    brand: 'Suzuki',
-    name: 'XL 7',
-    category: CarCategory.MPV,
-    pricePerDay: 500000,
-    image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=800',
+    pricePerDay: 450000,
+    image: 'https://images.unsplash.com/photo-1606611013016-969c19ba27bb?auto=format&fit=crop&q=80&w=1200',
     transmission: 'Automatic',
     fuelType: 'Bensin',
     seats: 7,
-    rating: 4.7,
-    description: 'The New Extraordinary SUV untuk petualangan keluarga.',
-    features: ['Smart E-Mirror', 'Ground Clearance Tinggi', 'LED Headlamp']
+    rating: 4.8,
+    description: 'Irit, handal, dan cocok untuk keliling Jakarta seharian.',
+    features: ['Unit Bersih', 'Double Blower', 'Audio Bluetooth']
   }
 ];
 
@@ -87,23 +73,16 @@ export const INITIAL_USERS: User[] = [
 export const SLIDER_DATA = [
   {
     id: 1,
-    title: "Toyota Innova Zenix",
-    subtitle: "Teknologi Hybrid Terbaru untuk Keluarga",
-    image: "https://images.unsplash.com/photo-1606611013016-969c19ba27bb?auto=format&fit=crop&q=80&w=1600",
-    cta: "Pesan Sekarang"
+    title: "Luxury Mobility",
+    subtitle: "Innova Zenix Hybrid - Masa Depan Berkendara Keluarga",
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1600",
+    cta: "Pesan Unit"
   },
   {
     id: 2,
-    title: "Executive Alphard",
-    subtitle: "Kemewahan Tanpa Kompromi",
+    title: "VIP Executive",
+    subtitle: "Alphard Transformer - Perjalanan Bintang Lima",
     image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1600",
-    cta: "Sewa Premium"
-  },
-  {
-    id: 3,
-    title: "Suzuki XL7",
-    subtitle: "SUV Tangguh untuk Petualangan Anda",
-    image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=1600",
-    cta: "Lihat Detail"
+    cta: "Sewa Sekarang"
   }
 ];

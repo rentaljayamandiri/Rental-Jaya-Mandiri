@@ -20,14 +20,16 @@ export const dbService = {
       sliders: JSON.parse(localStorage.getItem(KEYS.SLIDERS) || '[]'),
       contact: JSON.parse(localStorage.getItem(KEYS.CONTACT) || '{}'),
       users: JSON.parse(localStorage.getItem(KEYS.USERS) || '[]'),
+      timestamp: new Date().toISOString()
     };
-    return btoa(JSON.stringify(data)); // Encode ke base64 agar aman dicopy
+    // Encode ke base64 agar aman dicopy sebagai "Sync Key"
+    return btoa(unescape(encodeURIComponent(JSON.stringify(data))));
   },
 
   // Masukkan data dari backup
-  importAllData: (base64Data: string) => {
+  importAllData: (syncKey: string) => {
     try {
-      const decoded = JSON.parse(atob(base64Data));
+      const decoded = JSON.parse(decodeURIComponent(escape(atob(syncKey))));
       if (decoded.cars) localStorage.setItem(KEYS.CARS, JSON.stringify(decoded.cars));
       if (decoded.articles) localStorage.setItem(KEYS.ARTICLES, JSON.stringify(decoded.articles));
       if (decoded.sliders) localStorage.setItem(KEYS.SLIDERS, JSON.stringify(decoded.sliders));
@@ -35,7 +37,7 @@ export const dbService = {
       if (decoded.users) localStorage.setItem(KEYS.USERS, JSON.stringify(decoded.users));
       return true;
     } catch (e) {
-      console.error("Import failed", e);
+      console.error("Database Sync Failed", e);
       return false;
     }
   },
